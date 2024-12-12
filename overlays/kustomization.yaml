@@ -1,0 +1,29 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: devops-monitoring
+
+resources:
+- ../prometheus/base
+- ../grafana/base
+- ../influxdb/base
+
+patchesStrategicMerge:
+- prometheus/deployment.yaml
+- grafana/deployment.yaml
+- influxdb/deployment.yaml
+
+configMapGenerator:
+- name: prometheus-config
+  files:
+    - prometheus/prometheus.yml
+
+- name: grafana-config
+  files:
+    - grafana/grafana.ini
+    
+- name: influxdb-config
+  files:
+    - influxdb/influxdb.conf
+
+generatorOptions:
+  disableNameSuffixHash: false
