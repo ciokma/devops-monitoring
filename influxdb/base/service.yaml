@@ -6,15 +6,16 @@ metadata:
   labels:
     app.kubernetes.io/name: influxdb
 spec:
+  type: NodePort
   ipFamilies:
   - IPv4
+  ipFamilyPolicy: SingleStack
   ports:
     - port: 8086
       targetPort: 8086
       protocol: TCP
-  internalTrafficPolicy: Cluster
-  type: ClusterIP
-  ipFamilyPolicy: SingleStack
+      nodePort: 30003
   sessionAffinity: None
+  internalTrafficPolicy: Cluster
   selector:
     app.kubernetes.io/name: influxdb
