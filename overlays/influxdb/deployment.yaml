@@ -22,7 +22,7 @@ spec:
       #   fsGroup: 1000    # Asegura permisos de grupo para volúmenes
       containers:
       - name: influxdb
-        image: influxdb:1.11.8
+        image: influxdb:2.7.11
         imagePullPolicy: IfNotPresent
         args: ["-config", "/etc/influxdb/influxdb.conf"]
         ports:
