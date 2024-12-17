@@ -11,7 +11,7 @@ scrape_configs:
     scheme: http
     enable_http2: true
     static_configs:
-      - targets: ['172.31.85.213:9100']
+      - targets: ['172.31.85.213:8080']
   - job_name: node_exporter
     scrape_interval: 15s
     scrape_timeout: 10s
